@@ -96,7 +96,7 @@ const ChangePassword = () => {
       <div className="py-2 px-4 w-[100%] mt-5">
         <div className="flex w-full">
           <h2 className="md:text-2xl text-[18px] font-semibold">
-            Change Password {userid._id}
+            Change Password ({userid.email})
           </h2>
         </div>
         <hr className="my-5 border-gray-400" />

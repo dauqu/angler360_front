@@ -158,7 +158,7 @@ const Sidebar = ({ status }) => {
 
         {/* Analytics  */}
 
-        <p className="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
+        {/* <p className="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
           Analytics
         </p>
 
@@ -171,14 +171,20 @@ const Sidebar = ({ status }) => {
             className={"mr-3 hover:text-inherit"}
           />
           Statistic
-        </Link>
+        </Link> */}
 
         {/* Setting  */}
         <p className="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
           Settings
         </p>
-
         <Link
+          to="/changepassword"
+          className="mb-3 capitalize text-black text-base font-medium font-sans hover:text-teal-600 transition ease-in-out duration-500 flex flex-row items-center"
+        >
+          <AiOutlineUnlock size={20} className={"mr-3 hover:text-inherit"} />
+          Change Password
+        </Link>
+        {/* <Link
           to="/setting"
           className="mb-3 capitalize text-black text-base font-medium font-sans hover:text-teal-600 transition ease-in-out duration-500 flex flex-row items-center"
         >
@@ -192,23 +198,15 @@ const Sidebar = ({ status }) => {
         >
           <CgProfile size={20} className={"mr-3 hover:text-inherit"} />
           Profile Settings
-        </Link>
+        </Link> */}
 
-        <Link
-          to="/changepassword"
-          className="mb-3 capitalize text-black text-base font-medium font-sans hover:text-teal-600 transition ease-in-out duration-500 flex flex-row items-center"
-        >
-          <AiOutlineUnlock size={20} className={"mr-3 hover:text-inherit"} />
-          Change Password
-        </Link>
-
-        <Link
+        {/* <Link
           to="/security"
           className="mb-3 capitalize text-black text-base font-medium font-sans hover:text-teal-600 transition ease-in-out duration-500 flex flex-row items-center"
         >
           <MdOutlineSecurity size={20} className={"mr-3 hover:text-inherit"} />
           Security
-        </Link>
+        </Link> */}
 
         {/* <Link
           to="/login-history"
@@ -217,14 +215,14 @@ const Sidebar = ({ status }) => {
           <ImHistory size={20} className={"mr-3 hover:text-inherit"} />
           Login History
         </Link> */}
-
+{/* 
         <Link
           to="/notification"
           className="mb-3 capitalize text-black text-base font-medium font-sans hover:text-teal-600 transition ease-in-out duration-500 flex flex-row items-center"
         >
           <AiOutlineBell size={20} className={"mr-3 hover:text-inherit"} />
           Notifications
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

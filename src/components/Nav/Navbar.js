@@ -46,9 +46,13 @@ const Navbar = ({ toggleSidebar }) => {
           </div>
         </div>
         <div className="flex  items-center float-right justify-end cursor-pointer mr-2">
-          <Link to="/profile">
+          <Link to="#">
             <div className="bg-white flex justify-center mr-4 items-center w-10 h-10 rounded-full">
-              <IoNotificationsSharp  size={20} color="#32A8F1" className="w-full   rounded-full" />
+              <IoNotificationsSharp
+                size={20}
+                color="#32A8F1"
+                className="w-full   rounded-full"
+              />
             </div>
           </Link>
           <Link to="/profile">
