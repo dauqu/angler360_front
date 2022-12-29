@@ -42,6 +42,7 @@ import Profile_page from "../pages/Profile/Profile_page";
 import Edit_product from "../components/Product/Edit_product";
 import Cancelled_order from "../components/Orders/Cancelled_order";
 import Product_details from "../components/Product/Product_details";
+import Add_user from "../components/users/Add_user";
 axios.defaults.withCredentials = true;
 
 const Root = () => {
@@ -56,6 +57,7 @@ const Root = () => {
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/viewproduct" element={<ViewProduct />} />
         <Route path="/viewusers" element={<ViewUsers />} />
+        <Route path="/adduser" element={<Add_user />} />
         <Route path="/vieworders" element={<ViewOrders />} />
         <Route path="/viewimages" element={<ViewImages />} />
         <Route path="/profile" element={<Profile_page />} />

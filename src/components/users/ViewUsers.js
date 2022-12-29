@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Base from "../../components/Base/Base";
 import { AiOutlinePlus } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -8,9 +9,15 @@ import box from "../../assets/img/box.jpg";
 import box2 from "../../assets/img/box2.png";
 import { API } from "../../Constant";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { Snackbar } from "@mui/material";
+import MuiAlert from "@mui/material/Alert";
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 function ViewUsers() {
   const [users, setUsers] = useState([]);
-
+  const [delete_user, setDelete_user] = useState(false);
   const getAllUsers = () => {
     const resp = axios
       .get(`${API}/getuser`)
@@ -26,13 +33,50 @@ function ViewUsers() {
     getAllUsers();
   }, []);
 
+  // code to delete user by id
+  const handleDelete = (_id) => {
+    axios
+      .delete(`${API}/getuser/delete/${_id}`)
+      .then((res) => {
+        console.log(res);
+        setDelete_user(true);
+        setTimeout(
+          (res) => {
+            // code to reload window
+            window.location.href = "/viewusers";
+          },
+          [1000]
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setDelete_user(false);
+  };
   return (
     <div>
       <Base>
         <div className="container mx-auto px-4 sm:px-8">
           <div className="py-8">
-            <div className="flex w-full">
-              <h2 className="md:text-2xl text-[18px] font-semibold">User's</h2>
+            <div className="flex justify-between w-full">
+              <div>
+                <h2 className="md:text-2xl text-[18px] font-semibold">
+                  User's
+                </h2>
+              </div>
+              <div>
+                <Link to="/adduser">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <AiOutlinePlus className="inline-block mr-2" />
+                    Add User
+                  </button>
+                </Link>
+              </div>
             </div>
             <hr className="my-5 border-gray-400" />
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -72,7 +116,7 @@ function ViewUsers() {
                               <div className="flex-shrink-0 w-10 h-10">
                                 <img
                                   className="w-full h-full rounded-full"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                  src={user.image}
                                   alt=""
                                 />
                               </div>
@@ -112,7 +156,10 @@ function ViewUsers() {
                             </p>
                           </td>
                           <td className="px-3 py-3 border-b border-gray-200 bg-white text-sm">
-                            <IconButton aria-label="delete">
+                            <IconButton
+                              aria-label="delete"
+                              onClick={() => handleDelete(user._id)}
+                            >
                               <DeleteIcon
                                 sx={{
                                   color: "#ff4242",
@@ -128,6 +175,20 @@ function ViewUsers() {
               </div>
             </div>
           </div>
+          <Snackbar
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            open={delete_user}
+            autoHideDuration={2000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              User Deleted Successfully!
+            </Alert>
+          </Snackbar>
         </div>
       </Base>
     </div>

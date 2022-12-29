@@ -11,6 +11,7 @@ import {
 
 import { BsGear, BsRecordCircle, BsListNested } from "react-icons/bs";
 import { RxDashboard } from "react-icons/rx";
+import { HiOutlineUserAdd } from "react-icons/hi";
 import { TiContacts } from "react-icons/ti";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { MdAddBusiness, MdOutlineCategory } from "react-icons/md";
@@ -144,6 +145,13 @@ const Sidebar = ({ status }) => {
           <FaUsers size={20} className={"mr-3 hover:text-inherit"} />
           View Users
         </Link>
+        <Link
+          to="/adduser"
+          className="mb-3 capitalize text-black text-base font-medium font-sans hover:text-teal-600 transition ease-in-out duration-500 flex flex-row items-center"
+        >
+          <HiOutlineUserAdd size={20} className={"mr-3 hover:text-inherit"} />
+          Add User
+        </Link>
         {/* media */}
         <p className="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">
           Media
@@ -215,7 +223,7 @@ const Sidebar = ({ status }) => {
           <ImHistory size={20} className={"mr-3 hover:text-inherit"} />
           Login History
         </Link> */}
-{/* 
+        {/* 
         <Link
           to="/notification"
           className="mb-3 capitalize text-black text-base font-medium font-sans hover:text-teal-600 transition ease-in-out duration-500 flex flex-row items-center"
