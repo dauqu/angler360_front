@@ -178,7 +178,7 @@ function Product_details() {
                         <div className="px-4 py-2 font-semibold text-[18px]">
                           Order_Status
                         </div>
-                        {product.order_status == "dēlivered" ? (
+                        {product.order_status == "delivered" ? (
                           <div className="px-4 py-2 text-[16px]">
                             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                               <span
